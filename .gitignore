@@ -2,7 +2,10 @@ venv/
 __pycache__/
 *.pyc
 .env
-data/
+#data/
 models/
 mlruns/
-dvc.lock
+data/processed/
+data/raw/
+#dvc.lock
+/data
