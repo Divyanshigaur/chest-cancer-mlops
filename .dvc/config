@@ -1,0 +1,6 @@
+[core]
+    remote = storage
+['remote "myremote"']
+    url = C:\dvc-storage
+['remote "storage"']
+    url = ../dvc-storage

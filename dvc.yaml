@@ -1,0 +1,40 @@
+stages:
+  preprocess:
+    cmd: python src/split_data.py
+    deps:
+      - data/raw/
+      - src/split_data.py
+    outs:
+      - data/processed/
+
+  train_cnn:
+    cmd: python src/models/train_cnn.py
+    deps:
+      - data/processed/
+      - src/models/train_cnn.py
+    outs:
+      - models/cnn.h5
+
+  train_mobilenet:
+    cmd: python src/models/train_mobilenet.py
+    deps:
+      - data/processed/
+      - src/models/train_mobilenet.py
+    outs:
+      - models/mobilenet.h5
+
+  train_efficientnet:
+    cmd: python src/models/train_efficientnet.py
+    deps:
+      - data/processed/
+      - src/models/train_efficientnet.py
+    outs:
+      - models/efficientnet.h5
+
+  train_regularized_cnn:
+    cmd: python src/models/train_regularized_cnn.py
+    deps:
+      - data/processed/
+      - src/models/train_regularized_cnn.py
+    outs:
+      - models/regularized_cnn.h5

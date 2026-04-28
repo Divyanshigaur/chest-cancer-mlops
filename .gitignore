@@ -8,4 +8,4 @@ mlruns/
 data/processed/
 data/raw/
 #dvc.lock
-/data
+cosmic-zenith-*.json
