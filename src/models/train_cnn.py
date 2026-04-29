@@ -91,6 +91,7 @@ model.compile(
 
 
 # ================= MLFLOW =================
+mlflow.set_tracking_uri("file:./mlruns")
 mlflow.set_experiment("chest-cancer")
 
 with mlflow.start_run(run_name="cnn_model"):
