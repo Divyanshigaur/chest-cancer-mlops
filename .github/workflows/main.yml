@@ -1,31 +1,38 @@
 name: ML Pipeline
 
 on:
-  push:
-    branches: [ "main" ]
+push:
+branches: [ "main" ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+build:
+runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+```
+steps:
+- name: Checkout code
+  uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.11"
+- name: Set up Python
+  uses: actions/setup-python@v4
+  with:
+    python-version: "3.11"
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+- name: Install dependencies
+  run: |
+    pip install -r requirements.txt
 
-    - name: Install DVC
-      run: pip install dvc
+- name: Install DVC with S3 support
+  run: pip install dvc[s3]
 
-    - name: Pull data (optional if remote added)
-      run: dvc pull || true
+- name: Configure AWS credentials
+  run: |
+    dvc remote modify s3remote access_key_id ${{ secrets.AKIAWD4HB46XF5FHU34L }}
+    dvc remote modify s3remote secret_access_key ${{ secrets.UmEiefNIbDpaLyLc7jaHOSYF/eQxeCgcE1SAU9dm }}
 
-    - name: Run pipeline
-      run: dvc repro
+- name: Pull data from S3
+  run: dvc pull
+
+- name: Run pipeline
+  run: dvc repro
+```
