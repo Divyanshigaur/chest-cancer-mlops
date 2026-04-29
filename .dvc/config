@@ -1,6 +1,8 @@
 [core]
-    remote = storage
+    remote = s3remote
 ['remote "myremote"']
     url = C:\dvc-storage
 ['remote "storage"']
     url = ../dvc-storage
+['remote "s3remote"']
+    url = s3://chest-cancer-dvc-12345

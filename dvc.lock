@@ -18,3 +18,71 @@ stages:
       md5: f0328a077226420897492c3fc9767804.dir
       size: 929692807
       nfiles: 15000
+  train_cnn:
+    cmd: python src/models/train_cnn.py
+    deps:
+    - path: data/processed/
+      hash: md5
+      md5: f0328a077226420897492c3fc9767804.dir
+      size: 929692807
+      nfiles: 15000
+    - path: src/models/train_cnn.py
+      hash: md5
+      md5: 2cf916459f32927fec675036e038adb6
+      size: 4668
+    outs:
+    - path: models/cnn.h5
+      hash: md5
+      md5: c451d512f3495b77aac3d3594146f8f3
+      size: 134078696
+  train_mobilenet:
+    cmd: python src/models/train_mobilenet.py
+    deps:
+    - path: data/processed/
+      hash: md5
+      md5: f0328a077226420897492c3fc9767804.dir
+      size: 929692807
+      nfiles: 15000
+    - path: src/models/train_mobilenet.py
+      hash: md5
+      md5: 439337c4d51dd574f743284da43845dc
+      size: 4568
+    outs:
+    - path: models/mobilenet.h5
+      hash: md5
+      md5: 2a8addaff66d2cede8599fbf63aca4f9
+      size: 11379448
+  train_efficientnet:
+    cmd: python src/models/train_efficientnet.py
+    deps:
+    - path: data/processed/
+      hash: md5
+      md5: f0328a077226420897492c3fc9767804.dir
+      size: 929692807
+      nfiles: 15000
+    - path: src/models/train_efficientnet.py
+      hash: md5
+      md5: 4c57c0c8a4417288cdef763db551159f
+      size: 5078
+    outs:
+    - path: models/efficientnet.h5
+      hash: md5
+      md5: 0bad7aed7236a6e22ea7fc178bc8a51a
+      size: 29522264
+  train_regularized_cnn:
+    cmd: python src/models/train_regularized_cnn.py
+    deps:
+    - path: data/processed/
+      hash: md5
+      md5: f0328a077226420897492c3fc9767804.dir
+      size: 929692807
+      nfiles: 15000
+    - path: src/models/train_regularized_cnn.py
+      hash: md5
+      md5: 27b20c119fbe6c17e39d7ec13daab49a
+      size: 4618
+    outs:
+    - path: models/regularized_cnn.h5
+      hash: md5
+      md5: b87b46fa5b9785b8dbfec5c8e5a9077a
+      size: 267029336
